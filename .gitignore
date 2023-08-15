@@ -1,0 +1,7 @@
+*.asy
+Chapters/
+main.synctex.gz
+main.pre
+main.out
+main.log
+main.aux
