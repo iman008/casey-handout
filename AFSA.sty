@@ -1,0 +1,216 @@
+%---------------------------------------Initial Packages---------------------------------------
+\usepackage{fontspec}
+\usepackage{advdate}
+\usepackage{comment}
+\usepackage{fancyhdr}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage[dvipsnames,table]{xcolor}%use colors with extended names and table cellcolors
+\usepackage{xcolor}
+\usepackage{titling}
+\usepackage{amsfonts}
+\usepackage{tocloft}
+\usepackage{fullpage}
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{tikz}  
+\usepackage{tkz-graph}
+\usepackage{graphicx}
+\usepackage{balance}
+\usepackage{mathrsfs}
+\usepackage{float}
+\usepackage{tikz}
+\usepackage{hyperref}
+\usepackage{standalone}
+\usepackage{enumitem}
+\usepackage{lipsum}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{thmtools}
+\usepackage{eso-pic}
+\usepackage{titlesec}
+\usepackage{subcaption}% for caption customization
+\usepackage{tabularray}% new table package
+\graphicspath{ {./Figures/} }% image and figures arer in figures folder
+\usepackage[utf8]{inputenc}
+\usepackage{pgfplots}
+\usepackage{siunitx}
+\usepackage{lipsum}
+\usepackage{lmodern}
+\usepackage[most]{tcolorbox}
+\usepackage[inline]{asymptote}% for asymptote in Xelatex
+% \usepackage[english]{babel} I don't know what is this package doing :((((
+\pgfplotsset{compat=1.15}
+\newtheorem*{note}{Note}
+\usepackage{blindtext}
+\usepackage{multicol}
+\setlength{\columnsep}{0.6cm}
+\hyphenchar\font=-1
+\usepackage{xepersian}
+\DeclareMathOperator{\lcm}{lcm}
+%---------------------------------------Colors-------------------------------------------------
+\definecolor{burntsienna}{rgb}{0.66, 0.13, 0.24}
+\definecolor{coolblack}{rgb}{0.0, 0.18, 0.39}
+%---------------------------------------Fonts--------------------------------------------------
+\newfontfamily\BLotus[
+Scale=1.3,
+Extension=.ttf, 
+Path=Fonts/,
+%	BoldFont=B Lotus Bold,
+]{B Lotus Bold}
+
+\settextfont[
+Scale=1,
+Extension=.ttf, 
+Path=Fonts/,
+BoldFont=XB Yas Bd,
+ItalicFont=XB Yas It,
+BoldItalicFont=XB Yas BdIt
+]{XB Yas}
+%---------------------------------------Title and page style-----------------------------------
+\newcommand{\subtitle}[1]{%
+	\posttitle{%
+		\par\end{center}
+	\begin{center}\LARGE#1\end{center}
+	\vskip0.5em}%
+	}
+%---------------------------------------Page Geometry------------------------------------------
+\newgeometry{top=2.5cm,bottom=3.5cm,left=3cm,right=3cm}
+%---------------------------------------Caption Settings---------------------------------------
+% \addtocounter{figure}{-1}% for figure counter
+% Label format
+\DeclareCaptionLabelFormat{AFSA}{#1 \textbf{(#2)}}
+
+% Separator style
+\DeclareCaptionLabelSeparator{AFSA}{. }
+
+% Caption format    
+\DeclareCaptionFormat{AFSA}{#1#2\small #3}
+
+\DeclareCaptionStyle{AFSA}{
+	% width=0.8\textwidth,
+	% font={small,sc,onehalfspacing,color=red},
+	% singlelinecheck=false,
+	justification=centering,
+	% margin={0cm,0cm},
+	% labelfont=bf,
+	format=AFSA,%
+	labelformat=AFSA,%
+	labelsep=AFSA
+}
+% \captionsetup{style=AFSA}
+%---------------------------------------Theorems: Theorem--------------------------------------
+\mdfdefinestyle{mdbluebox}{
+roundcorner=10pt,
+linewidth=0.5pt,
+skipabove=12pt,
+innerbottommargin=9pt,
+skipbelow=2pt,
+linecolor=blue,
+nobreak=true,
+backgroundcolor=TealBlue!5,
+}
+
+\declaretheoremstyle[
+headfont=\color{MidnightBlue}\BLotus,
+mdframed={style=mdbluebox},
+headpunct=,
+postheadspace={0pt}
+]{thmbluebox}
+
+\declaretheorem[style=thmbluebox,name={قضیه},numberwithin=section]{Theorem}
+%---------------------------------------Theorems: Example--------------------------------------
+\mdfdefinestyle{mdgreenbox}{
+linewidth=0.5pt,
+skipabove=12pt,
+frametitleaboveskip=5pt,
+frametitlebelowskip=0pt,
+skipbelow=2pt,
+frametitlefont=\bfseries,
+innertopmargin=4pt,
+innerbottommargin=8pt,
+nobreak=true,
+backgroundcolor=SeaGreen!5,
+linecolor=Green,
+}
+
+\declaretheoremstyle[
+headfont=\color{Green}\BLotus,
+mdframed={style=mdgreenbox},
+headpunct={},
+postheadspace={0pt}
+]{thmgreenbox}
+
+\declaretheorem[style=thmgreenbox,name={مثال},sibling=Theorem]{Example}
+%---------------------------------------Theorems: Definition-----------------------------------
+\mdfdefinestyle{mdredbox}{
+	roundcorner=10pt,
+	linewidth=0.5pt,
+	skipabove=12pt,
+	innerbottommargin=9pt,
+	skipbelow=2pt,
+	linecolor=RawSienna,
+	nobreak=true,
+	backgroundcolor=Salmon!5,
+}
+
+\declaretheoremstyle[
+headfont=\color{RawSienna}\BLotus,
+mdframed={style=mdredbox},
+headpunct=,
+postheadspace={0pt}
+]{thmredbox}
+
+\declaretheorem[style=thmredbox,name={تعریف},numberwithin=section]{Defenition}
+%---------------------------------------Theorems: Lemma----------------------------------------
+\mdfdefinestyle{mdorangebox}{
+	roundcorner=10pt,
+	linewidth=0.5pt,
+	skipabove=12pt,
+	innerbottommargin=9pt,
+	skipbelow=2pt,
+	linecolor=Orange,
+	nobreak=true,
+	backgroundcolor=RedOrange!5,
+}
+
+\declaretheoremstyle[
+headfont=\color{Orange}\BLotus,
+mdframed={style=mdorangebox},
+headpunct=,
+postheadspace={0pt}
+]{thmorangebox}
+
+\declaretheorem[style=thmorangebox,name={لم},numberwithin=section]{Lemma}
+%---------------------------------------Theorems: Problem--------------------------------------
+\declaretheoremstyle[
+%postheadspace={12pt},
+headfont=\BLotus,
+headpunct={.}
+]{prob}
+
+\declaretheorem[style=prob,name={مسئله}]{Problem}
+%---------------------------------------Theorems: Other----------------------------------------
+\theoremstyle{definition}
+%\newtheorem{Theorem}{قضیه}[section]
+%\newtheorem{Example}[Theorem]{مثال}
+%\newtheorem{Defenition}[Theorem]{تعریف}
+%\newtheorem{Problem}{مسئله}
+\theoremstyle{remark}
+\newtheorem*{Remark}{توجه}
+%---------------------------------------Commands-----------------------------------------------
+\newcommand{\AfterTheorem}{\textcolor{MidnightBlue}{.}\\}
+\newcommand{\AfterExample}{\textcolor{Green}{.}\\}
+\newcommand{\AfterDefenition}{\textcolor{RawSienna}{.}\\}
+\newcommand{\AfterLemma}{\textcolor{Orange}{.}\\}
+\newcommand{\Th}[1]{\begin{Theorem}#1\end{Theorem}}
+\newcommand{\Ex}[1]{\begin{Example}\AfterExample#1\end{Example}}
+\newcommand{\De}[1]{\begin{Defenition}#1\end{Defenition}}
+\newcommand{\Le}[1]{\begin{Lemma}#1\end{Lemma}}
+\newcommand{\Rem}[1]{\begin{Remark}#1\end{Remark}}
+\newcommand{\Proof}[1]{\begin{proof}#1\end{proof}}
+\newcommand{\TBox}[1]{\begin{tcolorbox}[colback=white,colframe=black!75!black]#1\end{tcolorbox}}
+\newcommand{\EnumNum}[1]{\begin{enumerate}#1\end{enumerate}}
+\newcommand{\EnumAlph}[1]{\begin{enumerate}[label=\alph*)]#1\end{enumerate}}
+\newcommand{\Dotdot}[1]{\begin{itemize}#1\end{itemize}}
+\newcommand{\Prob}[1]{\begin{Problem}#1\end{Problem}}
+\newcommand{\link}[2]{\href{#1}{\textcolor{burntsienna}{\textbf{\lr{(#2)}}}}}
